@@ -9,16 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+       Book.belongsTo(models.Users, { foreignKey: "user_id" });
     }
   }
   Book.init(
     {
-      book_id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        field: "book_id", // Nama kolom sebenarnya di database
-      },
+      user_id: DataTypes.INTEGER,
       judul: DataTypes.STRING,
       penulis: DataTypes.STRING,
       penerbit: DataTypes.STRING,
